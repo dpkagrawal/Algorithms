@@ -20,8 +20,6 @@ public class MergeSort{
 	}
 	
 	private void merge(int[] input, int low, int mid, int high){
-		System.out.println("low:" + low + " mid:" + mid + "high:" + high);
-		System.out.println(input);
 		
 		int [] leftSubArray = new int[mid-low+1];
 		int [] rightSubArray = new int[high-mid];
@@ -59,12 +57,14 @@ public class MergeSort{
 			k++;
 		}
 	}
-	
+
 	public static void main(String[] args){
 		int[] values = new int[]{2,2,1};
 		MergeSort ms = new MergeSort();
 		ms.sort(values);
+		System.out.println("SORTED ARRAY: ");
 		for(int i=0;i< values.length;i++){
+			
 			System.out.println(values[i]);
 		}
 	}

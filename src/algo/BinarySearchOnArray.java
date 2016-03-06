@@ -18,7 +18,13 @@ public class BinarySearchOnArray {
 			return -1;
 		}
 	}
-
+	/*
+	 * Original Array: 1, 2, 3, 4, 5, 6, 7
+	 * 
+	 * Rotated Arrays: 7, 6, 1, 2, 3, 4, 5 4, 5, 6, 7, 1, 2, 3
+	 * 
+	 * Search for : 5, 7, 3
+	 */
 	public static int findInRotatedArray(int[] input, int number, int start,
 			int end) {
 		if (start > end) {

@@ -1,0 +1,16 @@
+a b c d e 6
+a b c d e 5
+a b c d e 4
+a b c d e 3
+a b c d e 2
+a b c d e 1
+a b c d e 0
+a b c d 4
+a b c d 3
+a b c d 2
+a b c d 1
+e f h 3
+z 1
+  1
+  
+   
