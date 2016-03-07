@@ -1,280 +1,189 @@
 package datastructure;
-import java.util.HashMap;
-import java.util.Map;
 
+// http://cslibrary.stanford.edu/110/BinaryTrees.html
+// https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java
+public class BinaryTree {
+	public class Node {
+		public int data;
+		Node left;
+		Node right;
 
-public class BinaryTree{
-	
-	Map parents = new HashMap<Integer,Integer>();
-	public class Node{
-	public int data;
-	Node left;
-	Node right;
-
-
-	Node()
-	{
-			
-		left  = null;	
-		right = null;
-
-	}
-	}
-	Node root=null;
-	
-
-	public  void insert( int value)
-
-	{
-		Node current = root;
-		Node previous=null;
-
-		if(root==null )
-		{
-			System.out.println("jdsfad");
-			root = new Node();
-			root.data = value;
-			//root = current;
+		Node() {
+			left = null;
+			right = null;
 		}
+	}
 
+	private Node root = null;
+
+	public void insert(int value) {
+		root = insert(this.root, value);
+	}
+
+	public Node insert(Node root, int value) {
+		if (root == null) {
+			Node n = new Node();
+			n.data = value;
+			return n;
+		}
+		if (value < root.data)
+			root.left = insert(root.left, value);
 		else
-		{
-		
-			while(current!=null)
-
-			{
-				previous = current;
-				if(current.data<value)
-				{	
-					current = current.left;
-				}
-				else
-				{	
-										
-					current = current.right;
-				}
-			}
-			
-			Node newnode=new Node();
-			newnode.data=value;
-			if(previous.data<value)
-				previous.left = newnode;
-			else
-				previous.right=newnode;
-		
-		}
-	
+			root.right = insert(root.right, value);
+		return root;
 	}
 
-	public static void inorder( Node root)
-	{
-		if( root==null)
-			return;
-
-		else
-		{
-			inorder(root.left);		
-			System.out.println(root.data);
-			inorder(root.right);
-
-		
-		}
-	
+	public void inOrder() {
+		inOrder(this.root);
+		System.out.println();
 	}
 
-
-
-
-/*	public Boolean delete(int value)
-	{
-		if(this.root==null)
-			return false;
-		else
-		{
-
-
-			Node current = this.root;
-			Node parentNode;
-			
-			while(current!=null)
-
-			{
-				if(value<current.data)
-					{
-						parentNode = current;
-						current=current.left;	
-
-					}
-				else if ( value> current.data)
-				{
-					parentNode = current;
-					current=current.right;
-				}			
-				else if( value =current.data)
-					break;			
-
-			}
-						
-			Node deleteNode=current;
-			
-			if(deleteNode.left== null && deleteNode.right==null)
-			{
-				if(parentNode.left.data ==value)
-
-					parentNode.left=null;
-				else
-					parentNode.right=null;
-				free(deleteNode);
-
-			}
-			else if (deleteNode.left!=null || deleteNode.right!=null)
-
-			{
-				if(parentNode.left.data ==value)
-
-					parentNode.left=deleteNode.left;
-				else
-					parentNode.right=deleteNode.right;
-				free(deleteNode);
-
-			}
-			else (deleteNode.left!=null && deleteNode.right!=null)
-
-			{
-				Node inorderSuccessor=deleteNode.right;// = findInorderSuccessor();
-				
-				while(inorderSuccessor.left!=null)
-					inorderSuccessor = inorderSuccessor.left;
-
-				deleteNode.data =inorderSuccessor.data;
-				
-				
-
-
-			}
-			
-			
-
+	private void inOrder(Node root) {
+		if (root != null) {
+			inOrder(root.left);
+			System.out.print(root.data + " ");
+			inOrder(root.right);
 		}
-
-
-
 	}
-*/
 
-public Boolean findParents(Node p )
-{
-Node current = this.root;
-		
-		while(current.data != p.data)
-		{		
+	public void preOrder() {
+		preOrder(this.root);
+		System.out.println();
+	}
 
-			this.parents.put(current,current.data);
-			
+	public void postOrder() {
+		postOrder(this.root);
+		System.out.println();
+	}
 
-
-			if(p.data< current.data)
-				current=current.left;
-			else
-				current=current.right;
-			
+	private static void preOrder(Node root) {
+		if (root != null) {
+			System.out.print(root.data + " ");
+			preOrder(root.left);
+			preOrder(root.right);
 		}
-		
-		if(current!=null)
+	}
+
+	public static void postOrder(Node root) {
+		if (root != null) {
+			postOrder(root.left);
+			postOrder(root.right);
+			System.out.print(root.data + " ");
+		}
+	}
+
+	public boolean find(Integer value) {
+		Node searchedNode = find(root, value);
+		if (searchedNode != null) {
 			return true;
-		else
-			return false;
-	
-
-
-}
-public void nearestCommonAncestor(Integer p , Integer q)
-
-{
-	Node current = this.root;
-	if(this.root.left==null && this.root.right==null)
-		System.out.println("There is only a root node");	
-		
-	//else if(!findParents(p) || !findParents(p))
-	//	System.out.println("Cannot find the given nodes");
-	else {
-
-		
-		while(current.data != p )
-		{		
-			this.parents.put(current.data,0);
-			System.out.println("inserting "+current.data+"value of p"+p);
-			if(current.data<p)
-				current=current.left;
-			else
-				current=current.right;
-
-			if(current==null)break;
-			
 		}
-
-		current=this.root;
-		while(current.data != q )
-		{		System.out.println("hello3");
-			if(parents.containsKey(current.data))
-			{
-				Integer i = (Integer)this.parents.get(current.data);
-				System.out.println("the value is : "+current.data);
-				//parents.put(current.data,i++);
-			}
-			else
-				this.parents.put(current.data,0);
-			if( current.data<q)
-				current=current.left;
-			else
-				current=current.right;
-			if(current==null)break;
-			
-		}
-
-		for(Object key : parents.keySet())
-		{
-			Integer value = (Integer)parents.get(key);
-			System.out.println("the list contains "+value+"dfadf"+key);
-
-		}
-		
-
-
+		return false;
 	}
 
-		
+	private Node find(Node currNode, Integer value) {
+		if (currNode != null) {
+			if (currNode.data == value)
+				return currNode;
+			else if (value < currNode.data)
+				return find(currNode.left, value);
+			else
+				return find(currNode.right, value);
+		}
+		return null;
+	}
 
-		/*for(MapEntry mapEntry : parents.entrySet()) {
-	    		Node key = mapEntry.getKey();
-	   		 Integer value = mapEntry.getValue();
-		}*/
+	public void nearestCommonAncestor(Integer p, Integer q) {
+		if (find(p) && find(q)) {
+			Node ancestor = nearestCommonAncestor(root, p, q);
+			if (ancestor != null) {
+				System.out.println("ANCESTOR Is: " + ancestor.data);
+			}
+		} else{
+			System.out.println("ANCESTOR NOT FOUND ");
+		}
+	}
 
+	private Node nearestCommonAncestor(Node currNode, Integer p, Integer q) {
+		if (currNode != null) {
+			if (p < currNode.data && q < currNode.data) {
+				return nearestCommonAncestor(currNode.left, p, q);
+			} else if (p > currNode.data && q > currNode.data) {
+				return nearestCommonAncestor(currNode.right, p, q);
+			} else {
+				return currNode;
+			}
+		}
+		return null;
+	}
+	
+	public void delete(Integer value){
+		root = delete(root, value);
+	}
+	
+	private Node delete(Node currNode,Integer value){
+		if (currNode != null) {
+			
+			if(value < currNode.data){ 
+				currNode.left = delete(currNode.left, value);
+			} else if( value > currNode.data){
+				currNode.right = delete(currNode.right, value);
+			} else if(currNode.left!=null && currNode.right!=null){
+				currNode.data = findMin(currNode.right).data;
+				currNode.right = delete(currNode.right, currNode.data);
+			} else{
+				return currNode.left!=null ? currNode.left : currNode.right;
+			}
+		}
+		return currNode;
+	}
+	
+	private Node findMin(Node node){
+		if(node==null)
+			return null;
+		else if(node.left==null){
+			return  node;
+		} else{
+			return findMin(node.left);
+		}
+	}
 
-}
-
-
-
-	public static void main( String[] args)
-	{
-
+	public static void main(String[] args) {
 		BinaryTree b = new BinaryTree();
-		 b.insert(7);
+		b.insert(7);
 		b.insert(9);
 		b.insert(5);
-		
 		b.insert(2);
 		b.insert(1);
 		b.insert(8);
+		b.insert(4);
+		b.insert(3);
+		b.inOrder();
+		b.preOrder();
+		b.postOrder();
+		System.out.println(b.find(8));
+		System.out.println(b.find(10));
+		b.nearestCommonAncestor(3, 6);
+		b.nearestCommonAncestor(3, 9);
+		b.nearestCommonAncestor(1, 2);
+		
+		
+		System.out.println("DELETED");
+		b.delete(7);
+		b.delete(9);
+		b.delete(5);
+		b.delete(2);
+		b.delete(1);
+		b.delete(8);
+		b.delete(4);
+		b.delete(3);
+		b.inOrder();
 
-
-
-		inorder(b.root);
-		b.nearestCommonAncestor(2,1);
-	
-
+		System.out.println("SECOND TREE: ");
+		BinaryTree b1 = new BinaryTree();
+		b1.insert(7);
+		b1.inOrder();
+		b1.delete(7);
+		b1.inOrder();
 	}
-
-
-
+	
 }
