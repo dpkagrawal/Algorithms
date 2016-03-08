@@ -20,7 +20,7 @@ public class BfsShortestPath extends Bfs {
 	}
 
 	public static void main(String[] args) {
-		Graph g = new Graph("graph_data.txt");
+		Graph g = new Graph("data/graph_data.txt");
 		BfsShortestPath bfs = new BfsShortestPath(g, 0);
 		bfs.bfsProcess();
 		bfs.displayParentArray();

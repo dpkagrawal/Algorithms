@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /*
- *  Applications Of BFS
+ *     Applications Of BFS
  *   - Connected Component
  *   - Bipartite Graph
  *   - Vertex Coloring Algorithm 
