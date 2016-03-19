@@ -18,34 +18,39 @@ public class BinarySearchOnArray {
 			return -1;
 		}
 	}
+
 	/*
 	 * Original Array: 1, 2, 3, 4, 5, 6, 7
 	 * 
 	 * Rotated Arrays: 7, 6, 1, 2, 3, 4, 5 4, 5, 6, 7, 1, 2, 3
 	 * 
 	 * Search for : 5, 7, 3
+	 * 
+	 * 1. Left is sorted num in (start, mid) 
+	 * 		then => left else right
+	 * 2. Right is sorted num in (mid, end)
+	 * 		then => right else left
 	 */
 	public static int findInRotatedArray(int[] input, int number, int start,
 			int end) {
 		if (start > end) {
 			return -1;
 		}
-			int mid = (start + end) / 2;
-			if (input[mid] == number)
-				return mid;
-			else if(input[start] < input[mid]){
-				if(number <= input[mid] && number >= input[start]){
-					return findInRotatedArray(input, number, start, mid-1);
-				} else
-					return findInRotatedArray(input, number, mid+1, end);
-			} else {	
-				if(number >= input[mid] &&  number <= input[end])
-					return findInRotatedArray(input, number, mid+1, end);
-				else
-					return findInRotatedArray(input, number, start, mid-1);
-			}
-}
-
+		int mid = (start + end) / 2;
+		if (input[mid] == number)
+			return mid;
+		else if (input[start] < input[mid]) {
+			if (number <= input[mid] && number >= input[start]) {
+				return findInRotatedArray(input, number, start, mid - 1);
+			} else
+				return findInRotatedArray(input, number, mid + 1, end);
+		} else {
+			if (number >= input[mid] && number <= input[end])
+				return findInRotatedArray(input, number, mid + 1, end);
+			else
+				return findInRotatedArray(input, number, start, mid - 1);
+		}
+	}
 
 	public static void main(String[] args) {
 		int[] input = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };

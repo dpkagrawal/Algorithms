@@ -93,7 +93,7 @@ public class Graph {
 	}
 
 	public static void main(String[] args){
-		Graph g = new Graph("graph_data.txt");
+		Graph g = new Graph("data/graph_data.txt");
 		g.printAdjacencyList();
 	}
 }

@@ -21,7 +21,19 @@ public class Lru extends LinkedHashMap<Object, Object>{
 	@Override
 	protected boolean removeEldestEntry(java.util.Map.Entry<Object,Object> eldest) {
 		return size() > this.sizeOfCache;
-	};
+	}
+	
+	public String get(int key){
+		System.out.println("here");
+        //if(super.containsKey(key))
+          return (String) super.get(key);
+        //return -1;
+    }
+    
+    public void set(int key, String val){
+        super.put(key, val);
+    }
+	
 
 	public static void main(String args[]){
 		Lru lru = new Lru(3, 0.75f);
@@ -32,6 +44,7 @@ public class Lru extends LinkedHashMap<Object, Object>{
 		System.out.println(lru);
 		lru.put(4, "4"); // 2 will be removed
 		System.out.println(lru);
+		lru.get(0);
 	}
 	
 }

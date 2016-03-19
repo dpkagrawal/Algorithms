@@ -37,7 +37,7 @@ public abstract class Bfs {
 	
 	
 	public void bfsProcess(){
-		PriorityQueue<Integer> queue = new PriorityQueue<>();
+		PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
 		queue.add(this.startNode);
 		parent.set(startNode, -1);
 		state.set(this.startNode, State.DISCOVERD);

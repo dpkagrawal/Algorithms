@@ -11,7 +11,7 @@ public class MinimumNumberOfCoins {
 				} else if (j == 0) {
 					dp[i][j] = 0;
 				} else {
-					if (j >= coins[i - 1]) { // Coin value shoulsd be great than
+					if (j >= coins[i - 1]) { // Coin value should be great than
 												// equal to i
 						dp[i][j] = Math.min(1 + dp[i][j - coins[i - 1]],
 								dp[i - 1][j]);

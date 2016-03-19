@@ -3,7 +3,7 @@ package algo;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-public class FibonacciNthNumber {
+public class NthNumber {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

@@ -24,7 +24,7 @@ public class BfsShortestPath extends Bfs {
 		BfsShortestPath bfs = new BfsShortestPath(g, 0);
 		bfs.bfsProcess();
 		bfs.displayParentArray();
-		System.out.println("Total Edges: " + bfs.totalEdges);
+		System.out.println("\nTotal Edges: " + bfs.totalEdges);
 		System.out.println("Total Vertices: " + bfs.totalVertices);
 		
 	}

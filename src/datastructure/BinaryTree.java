@@ -98,7 +98,7 @@ public class BinaryTree {
 			if (ancestor != null) {
 				System.out.println("ANCESTOR Is: " + ancestor.data);
 			}
-		} else{
+		} else {
 			System.out.println("ANCESTOR NOT FOUND ");
 		}
 	}
@@ -115,37 +115,60 @@ public class BinaryTree {
 		}
 		return null;
 	}
-	
-	public void delete(Integer value){
+
+	public void delete(Integer value) {
 		root = delete(root, value);
 	}
-	
-	private Node delete(Node currNode,Integer value){
+
+	private Node delete(Node currNode, Integer value) {
 		if (currNode != null) {
-			
-			if(value < currNode.data){ 
+			if (value < currNode.data) {
 				currNode.left = delete(currNode.left, value);
-			} else if( value > currNode.data){
+			} else if (value > currNode.data) {
 				currNode.right = delete(currNode.right, value);
-			} else if(currNode.left!=null && currNode.right!=null){
+			} else if (currNode.left != null && currNode.right != null) {
 				currNode.data = findMin(currNode.right).data;
 				currNode.right = delete(currNode.right, currNode.data);
-			} else{
-				return currNode.left!=null ? currNode.left : currNode.right;
+			} else {
+				return currNode.left != null ? currNode.left : currNode.right;
 			}
 		}
 		return currNode;
 	}
-	
-	private Node findMin(Node node){
-		if(node==null)
+
+	private Node findMin(Node node) {
+		if (node == null)
 			return null;
-		else if(node.left==null){
-			return  node;
-		} else{
+		else if (node.left == null) {
+			return node;
+		} else {
 			return findMin(node.left);
 		}
 	}
+
+	public boolean isSameTree(Node p, Node q) {
+		if (p == null && q == null)
+			return true;
+		else if (p != null && q == null) {
+			return false;
+		} else if (p == null && q != null) {
+			return false;
+		} else {
+			return p.data == q.data && isSameTree(p, q) && isSameTree(p, q);
+		}
+	}
+	
+	/*
+	 * 
+	 *  Given target value.
+	 *  Find all the values which are closed to the target value.
+	 */
+	
+	void closedValueInBST(int value){
+		
+	}
+	
+	
 
 	public static void main(String[] args) {
 		BinaryTree b = new BinaryTree();
@@ -165,8 +188,6 @@ public class BinaryTree {
 		b.nearestCommonAncestor(3, 6);
 		b.nearestCommonAncestor(3, 9);
 		b.nearestCommonAncestor(1, 2);
-		
-		
 		System.out.println("DELETED");
 		b.delete(7);
 		b.delete(9);
@@ -177,7 +198,6 @@ public class BinaryTree {
 		b.delete(4);
 		b.delete(3);
 		b.inOrder();
-
 		System.out.println("SECOND TREE: ");
 		BinaryTree b1 = new BinaryTree();
 		b1.insert(7);
@@ -185,5 +205,4 @@ public class BinaryTree {
 		b1.delete(7);
 		b1.inOrder();
 	}
-	
 }
