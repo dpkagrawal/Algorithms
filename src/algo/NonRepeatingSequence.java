@@ -1,7 +1,9 @@
 package algo;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -11,34 +13,63 @@ import java.util.Set;
  *  For “BBBB” the longest substring is “B”, with length 1. For “GEEKSFORGEEKS”, 
  *  there are two longest substrings shown in the below diagrams, with length 7.
  */
-
 public class NonRepeatingSequence {
 	Set<Character> unique = new HashSet<Character>();
 	Hashtable<String, Integer> t = new Hashtable<String, Integer>();
 
-	public void find(String str) {
-		if (str != null && str.length() > 0) {
-			String maxString = "";
-			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < str.length(); i++) {
-				if (!unique.contains(str.charAt(i))) {
-					sb.append(str.charAt(i));
-					unique.add(str.charAt(i));
-				} else {
-					if (maxString.length() < sb.length())
-						maxString = sb.toString();
-					sb = new StringBuilder();
-					sb.append(str.charAt(i));
+	public int lengthOfLongestSubstring(String s) {
+		if (s == null || s.length() == 0)
+			return 0;
+		if (s.length() == 1)
+			return 1;
+		Map<Character, Integer> uniqueCharIndex = new HashMap<Character, Integer>();
+		int max = 0;
+		int currMax = 0;
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			// Repeating character
+			if (uniqueCharIndex.containsKey(c)) {
+				currMax = 0;
+				int startIndex = uniqueCharIndex.get(c); // last occurrence of
+															// duplicate
+															// character
+				uniqueCharIndex.clear();
+				/*
+				 * Remove all characters. And add characters which are unique
+				 * up till now. i.e between startIndex+1 to i
+				 */
+				for (int j = startIndex + 1; j <= i; j++) {
+					uniqueCharIndex.put(s.charAt(j), j);
+					currMax++;
 				}
+			} else {
+				// Unique. Add it to the map with index value.
+				uniqueCharIndex.put(c, i);
+				currMax++;
 			}
-			System.out.println(maxString);
+			if (max < currMax) {
+				max = currMax;
+			}
 		}
+		return max;
 	}
 
 	public static void main(String[] args) {
 		NonRepeatingSequence n = new NonRepeatingSequence();
-		n.find("ABDEFGABEF");
-		n.find("GEEKSFORGEEKS");
-		n.find("BBBB");
+		n.lengthOfLongestSubstring("dvdf");
+		// n.find("GEEKSFORGEEKS");
+		// n.find("BBBB");
+		int max = Integer.MAX_VALUE;
+		System.out.println(Integer.MAX_VALUE/1);
+		int p=10;
+		int q=2;
+		int counter =0;
+		int c=0;
+		 while (p >= (q << counter)) {
+             counter++;c++;
+         }
+		System.out.println(counter);
+		System.out.println(c);
+		System.out.println(2<<3);
 	}
 }
