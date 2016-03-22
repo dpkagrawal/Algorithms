@@ -48,8 +48,7 @@ public class KWayMerging {
 			if (!input.get(i).isEmpty()) {
 				queue.add(new Node(input.get(i).get(0), i));
 				index[i] = ++index[i];
-			} else
-				input.remove(i);
+			}
 		}
 
 	}
@@ -59,8 +58,8 @@ public class KWayMerging {
 
 		List<Integer> input1 = new ArrayList<Integer>();
 		input1.add(1);
-		input1.add(5);
-		input1.add(9);
+		//input1.add(5);
+		//input1.add(9);
 
 		List<Integer> input2 = new ArrayList<Integer>();
 		input2.add(2);

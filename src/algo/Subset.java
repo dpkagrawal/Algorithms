@@ -43,6 +43,7 @@ public class Subset {
 		ArrayList<Integer> a = new ArrayList<Integer>();
 		a.add(1);
 		a.add(2);
+		a.add(3);
 		ArrayList<ArrayList<Integer>> a1 = s.getSubsets(a, 0);
 		System.out.println(a1.toString());
 

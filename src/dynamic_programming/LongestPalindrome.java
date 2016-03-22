@@ -29,13 +29,12 @@ public class LongestPalindrome {
 							maxString = l;
 							start = i;
 							end = i + l;
-						} else{
+						} else {
 							dp[i][j] = false;
 						}
 					} else {
 						if (input.charAt(i) == input.charAt(j)
 								&& dp[i + 1][j - 1]) {
-							
 							dp[i][j] = true;
 							maxString = l;
 							start = i;
@@ -46,23 +45,19 @@ public class LongestPalindrome {
 					}
 				}
 			}
-
 			if (maxString > 0)
 				result = input.substring(start, end);
-			
 		}
 		return result;
 	}
-	
+
 	static String longestPalindromeSubsequence(String input) {
-		
 		String result = "";
 		if (input != null) {
 			int lengthOfString = input.length();
 			if (lengthOfString == 0 || lengthOfString == 1) {
 				return input;
 			}
-			
 			int maxString = 0;
 			int start = -1;
 			int end = -1;
@@ -70,35 +65,27 @@ public class LongestPalindrome {
 			for (int i = 0; i < lengthOfString; i++) {
 				dp[i][i] = 1;
 			}
-			
-			
-			
-			for(int l=2; l<= lengthOfString;l++){
-				for(int i=0;i+l <=lengthOfString; i++){
-					int j= i+l-1;
-					
-					if(l==2){
-						if(input.charAt(i) == input.charAt(j)){
-							dp[i][j]=2;
-						} else{
-							dp[i][j]=1;
+			for (int l = 2; l <= lengthOfString; l++) {
+				for (int i = 0; i + l <= lengthOfString; i++) {
+					int j = i + l - 1;
+					if (l == 2) {
+						if (input.charAt(i) == input.charAt(j)) {
+							dp[i][j] = 2;
+						} else {
+							dp[i][j] = 1;
 						}
-					} else{
-						if(input.charAt(i) == input.charAt(j)){
-							dp[i][j]= 2 + dp[i+1][j-1];
-						} else{
-							dp[i][j]=Math.max(dp[i+1][j], dp[i][j-1]);
+					} else {
+						if (input.charAt(i) == input.charAt(j)) {
+							dp[i][j] = 2 + dp[i + 1][j - 1];
+						} else {
+							dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
 						}
 					}
-					
-					
 				}
 			}
-			System.out.println(dp[0][input.length()-1]);
+			System.out.println(dp[0][input.length() - 1]);
 		}
-		
 		return result;
-
 	}
 
 	static void test(Integer a) {
@@ -112,7 +99,7 @@ public class LongestPalindrome {
 		System.out.println(LongestPalindrome.longestPalindromeSubtring(s));
 		s = "ABCD";
 		System.out.println(LongestPalindrome.longestPalindromeSubtring(s));
-		 s = "LPASPAL";
+		s = "LPASPAL";
 		System.out.println(LongestPalindrome.longestPalindromeSubtring(s));
 	}
 }
