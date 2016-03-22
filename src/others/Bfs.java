@@ -23,7 +23,7 @@ public class Bfs {
 		}
 
 		public void bfsUtils(int currentVertex, int searchVertex, boolean[] visited){
-			Queue<Integer> q = new PriorityQueue<Integer>();
+			Queue<Integer> q = new LinkedList<Integer>();
 			q.add(currentVertex);
 			visited[currentVertex] = true;
 

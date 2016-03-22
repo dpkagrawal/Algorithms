@@ -1,12 +1,11 @@
-package math;
+package interviews;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class MathProblem {
 
-	/*Write a program that takes an integer and prints out all ways to multiply smaller 
+	/*
+	 * Company: Linked In
+	 * Write a program that takes an integer and prints out all ways to multiply smaller 
 	 * integers that equal the original number, without repeating sets of factors. In other words, 
 	 * if your output contains 4 * 3, you should not print out 3 * 4 again as that would be a repeating set. 
 	 * Note that this is not asking for prime factorization only. 
