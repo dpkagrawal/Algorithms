@@ -157,18 +157,60 @@ public class BinaryTree {
 			return p.data == q.data && isSameTree(p, q) && isSameTree(p, q);
 		}
 	}
-	
+
 	/*
 	 * 
-	 *  Given target value.
-	 *  Find all the values which are closed to the target value.
+	 * Given target value. Find all the values which are closed to the target
+	 * value.
 	 */
-	
-	void closedValueInBST(int value){
-		
+
+	void closedValueInBST(int value) {
 	}
-	
-	
+
+	/*
+	  Given a binary tree, flatten it to a linked list in-place.
+		For example,
+		Given
+
+			         1
+			        / \
+			       2   5
+			      / \   \
+			     3   4   6
+			The flattened tree should look like:
+			   1
+			    \
+			     2
+			      \
+			       3
+			        \
+			         4
+			          \
+			           5
+			            \
+			             6
+	 */
+
+	public void flatten(Node root) {
+		flattenUtil(root);
+	}
+
+	public Node flattenUtil(Node root) {
+		if (root == null)
+			return root;
+		Node left = root.left;
+		Node right = root.right;
+		if (left != null) {
+			root.right = left;
+			root.left = null;
+			root = flattenUtil(left); // This will return the rightMost node of left sub-tree
+		}
+		if (right != null) {
+			root.right = right;
+			root = flattenUtil(right); // Right Most node of the sub-tree
+		}
+		return root;
+	}
 
 	public static void main(String[] args) {
 		BinaryTree b = new BinaryTree();

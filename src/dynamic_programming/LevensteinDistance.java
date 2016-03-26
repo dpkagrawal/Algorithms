@@ -1,5 +1,19 @@
 package dynamic_programming;
 public class LevensteinDistance {
+	/*
+	 * https://en.wikipedia.org/wiki/Levenshtein_distance
+	 * LevensteinDistance
+	 * lev(i,j) = min {
+	 * 
+	 * 				lev (i-1,j) + 1,
+	 * 				lev (i,j-1) + 1
+	 * 				lev (i-1,j-1) + cost 
+	 * }
+	 * 
+	 * cost = 1 if a!=b
+	 * cost = 0 if a==b
+	 */
+
 	int LevenshteinDistance(String s, int len_s, String t, int len_t) {
 		int cost;
 		/* base case: empty strings */
@@ -17,7 +31,7 @@ public class LevensteinDistance {
 		 * char from both
 		 */
 		int minValue = Math.min(
-				LevenshteinDistance(s, len_s - 1, t, len_t),
+				LevenshteinDistance(s, len_s - 1, t, len_t) + 1,
 				LevenshteinDistance(s, len_s, t, len_t - 1)) + 1;
 		minValue = Math.min(minValue,
 				LevenshteinDistance(s, len_s - 1, t, len_t - 1) + cost);
@@ -40,8 +54,8 @@ public class LevensteinDistance {
 					else
 						currentCost = 1;
 
-					int min = Math.min(cost[i - 1][j], cost[i][j - 1]) + 1;
-					cost[i][j] = Math.min(cost[i - 1][j - 1] + currentCost, min);
+					int min = Math.min(cost[i - 1][j], cost[i][j - 1]) + 1;  // Always add one as comparing previous strings.
+					cost[i][j] = Math.min(cost[i - 1][j - 1] + currentCost, min); // Adding current Cost
 				}
 			}
 		}
@@ -51,7 +65,6 @@ public class LevensteinDistance {
 	public static void main(String[] args) {
 		LevensteinDistance ld = new LevensteinDistance();
 		System.out.println(ld.LevenshteinDistance("aa", 2, "aabcda", 6));
-		;
 		System.out.println(ld.levenshteinDistanceDP("aa", "aabcda"));
 	}
 }
