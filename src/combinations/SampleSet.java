@@ -1,4 +1,4 @@
-package interviews;
+package combinations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +23,7 @@ public class SampleSet {
 			for(int j=0;j< newResults.size();j++){
 				 newResults.get(j).add(input.get(i));
 			}
+			System.out.println(newResults);
 			result.addAll(newResults);
 		}
 
