@@ -23,17 +23,40 @@ public class SampleSet {
 			for(int j=0;j< newResults.size();j++){
 				 newResults.get(j).add(input.get(i));
 			}
-			System.out.println(newResults);
+//			System.out.println(newResults);
 			result.addAll(newResults);
 		}
 
 		return result;
 	}
+	
+	static public void printVariants2(List<String> input, int start,int k, List<String> current, List<ArrayList<String>> result){
+		if(k<=0){
+			ArrayList<String> r = new ArrayList<String>(current);
+			result.add(r);
+			return;
+		}
+
+		for(int i=start; i<input.size();i++){
+			current.add(input.get(i));
+			printVariants2(input, i, k-1, current, result);
+			current.remove(current.size()-1);
+		}
+	}
 
 	public static void main(String []args){
 		List<String> input = new ArrayList<String>(Arrays.asList("q1", "q2"));
-		List<ArrayList<String>> result = SampleSet.printVariants(input, 0, 3);
+		int k =2;
+		List<ArrayList<String>> result = SampleSet.printVariants(input, 0, k);
 		System.out.println(result.size());
+		print(result);
+		result.clear();
+		printVariants2(input, 0, k, new ArrayList<String>(), result);
+		System.out.println("/nMethod 2");
+		print(result);
+	}
+
+	private static void print(List<ArrayList<String>> result) {
 		for(int i=0;i< result.size();i++){
 			List<String> temp = result.get(i);
 			for(int j=0; j < temp.size();j++){

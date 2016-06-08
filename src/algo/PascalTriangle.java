@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class PascalTriangle {
-	public List<List<Integer>> generate(int numRows) {
+	public static List<List<Integer>> generate(int numRows) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (numRows == 0)
 			return result;
@@ -38,5 +38,9 @@ public class PascalTriangle {
 			result.add(curr);
 		}
 		return result;
+	}
+	
+	public static void main(String[] args){
+		System.out.println(PascalTriangle.generate(5));
 	}
 }

@@ -31,7 +31,7 @@ public class LevensteinDistance {
 		 * char from both
 		 */
 		int minValue = Math.min(
-				LevenshteinDistance(s, len_s - 1, t, len_t) + 1,
+				LevenshteinDistance(s, len_s - 1, t, len_t),
 				LevenshteinDistance(s, len_s, t, len_t - 1)) + 1;
 		minValue = Math.min(minValue,
 				LevenshteinDistance(s, len_s - 1, t, len_t - 1) + cost);

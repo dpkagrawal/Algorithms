@@ -56,20 +56,8 @@ public class NonRepeatingSequence {
 
 	public static void main(String[] args) {
 		NonRepeatingSequence n = new NonRepeatingSequence();
-		n.lengthOfLongestSubstring("dvdf");
-		// n.find("GEEKSFORGEEKS");
-		// n.find("BBBB");
-		int max = Integer.MAX_VALUE;
-		System.out.println(Integer.MAX_VALUE/1);
-		int p=10;
-		int q=2;
-		int counter =0;
-		int c=0;
-		 while (p >= (q << counter)) {
-             counter++;c++;
-         }
-		System.out.println(counter);
-		System.out.println(c);
-		System.out.println(2<<3);
+		System.out.println(n.lengthOfLongestSubstring("dvdf"));
+		System.out.println(n.lengthOfLongestSubstring("GEEKSFORGEEKS"));
+		System.out.println(n.lengthOfLongestSubstring("BBBB"));
 	}
 }

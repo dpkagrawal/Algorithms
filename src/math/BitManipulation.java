@@ -1,5 +1,10 @@
 package math;
-
+/*
+ * 
+ * https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html
+ * The unsigned right shift operator ">>>" shifts a zero into the leftmost position,
+ * while the leftmost position after ">>" depends on sign extension.
+ */
 public class BitManipulation {
 	public static int reverseBits(int n) {
 		int m = 0;

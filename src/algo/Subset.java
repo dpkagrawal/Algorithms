@@ -16,7 +16,7 @@ public class Subset {
 			ArrayList<ArrayList<Integer>> moresubsets = new ArrayList<ArrayList<Integer>>();
 			for (ArrayList<Integer> subset : allsubsets) {
 				ArrayList<Integer> newsubset = new ArrayList<Integer>();
-				newsubset.addAll(subset); //
+				newsubset.addAll(subset); // O(n)
 				newsubset.add(item);
 				moresubsets.add(newsubset);
 			}
@@ -35,8 +35,8 @@ public class Subset {
 			}
 			System.out.println();
 		}
-
 	}
+
 	public static void main(String[] args) {
 		Subset s = new Subset();
 
@@ -46,7 +46,6 @@ public class Subset {
 		a.add(3);
 		ArrayList<ArrayList<Integer>> a1 = s.getSubsets(a, 0);
 		System.out.println(a1.toString());
-
+		s.getSubsetsUsingBinary(a);
 	}
-
 }

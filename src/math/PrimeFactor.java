@@ -28,6 +28,6 @@ public class PrimeFactor {
 		PrimeFactor.printFactor(15);
 		PrimeFactor.printFactor(16);
 		PrimeFactor.printFactor(10);
-		PrimeFactor.printFactor(25);
+		PrimeFactor.printFactor(250);
 	}
 }

@@ -26,8 +26,8 @@ public class Knapsack {
 		// row-columns
 		int numberOfItems = items.size();
 		int[][] dp = new int[numberOfItems + 1][sizeOfBag + 1];
-		// row is weight
-		// column is item
+		// item is row
+		// weight is column
 		for (int item = 0; item <= numberOfItems; item++) {
 			for (int weight = 0; weight <= sizeOfBag; weight++) {
 				if (weight == 0 || item == 0) {

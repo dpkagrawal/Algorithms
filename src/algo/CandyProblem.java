@@ -42,4 +42,10 @@ public class CandyProblem {
 		}
 		return result;
 	}
+	
+	public static void main(String[] args){
+		CandyProblem cp = new CandyProblem();
+		int [] input = {1,4,5,6,2,1};
+		System.out.println("Candies: " + cp.candy(input));
+	}
 }

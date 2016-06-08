@@ -4,7 +4,8 @@ public class LongestPalindrome {
 	/*
 	 * 
 	 * Divide the problem in sub-problem and if then solve the sub-problem
-	 * LPS(ABCBA) = 2+ LPS(BCB) ...
+	 * LPS(ABCBA) = 2+ LPS(BCB)
+	 * https://www.youtube.com/watch?v=obBdxeCx_Qs
 	 */
 	static String longestPalindromeSubtring(String input) {
 		String result = "";

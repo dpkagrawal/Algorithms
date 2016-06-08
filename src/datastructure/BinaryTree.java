@@ -1,5 +1,9 @@
 package datastructure;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 // http://cslibrary.stanford.edu/110/BinaryTrees.html
 // https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java
 public class BinaryTree {
@@ -115,6 +119,32 @@ public class BinaryTree {
 		}
 		return null;
 	}
+	
+	
+	
+	public Node leastCommonAncester(Node root, Set<Integer> searchValues, int total) {
+		
+		Node ancestor = null;
+		if(root==null) return ancestor;
+
+		boolean potentialAncester = total == searchValues.size();
+
+		searchValues.remove(root.data);
+
+		ancestor = leastCommonAncester(root.left, searchValues, total);
+		if (ancestor != null)
+			return ancestor;
+		
+		ancestor = leastCommonAncester(root.right, searchValues, total);
+		if (ancestor != null)
+			return ancestor;
+
+		if (searchValues.size() == 0 && potentialAncester) {
+			ancestor = root;
+		}
+		return ancestor;
+	}
+	
 
 	public void delete(Integer value) {
 		root = delete(root, value);
@@ -230,6 +260,14 @@ public class BinaryTree {
 		b.nearestCommonAncestor(3, 6);
 		b.nearestCommonAncestor(3, 9);
 		b.nearestCommonAncestor(1, 2);
+		
+		System.out.println("New Ancestor Method");
+		Set<Integer> s = new HashSet(Arrays.asList(1,2));
+		System.out.println(b.leastCommonAncester(b.root, s, 2).data);
+		
+		
+		
+		
 		System.out.println("DELETED");
 		b.delete(7);
 		b.delete(9);
